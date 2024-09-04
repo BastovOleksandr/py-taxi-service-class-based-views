@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if car %}
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Manufacturer</th>
+        <th scope="col">Country</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>{{ car.manufacturer.name }}</th>
+        <th>{{ car.manufacturer.country }}</th>
+      </tr>
+      </tbody>
+    </table>
+    <br>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Staff</th>
+        <th scope="col">Active</th>
+        <th scope="col">Date joined</th>
+        <th scope="col">License number</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for driver in car.drivers.all %}
+        <tr>
+          <th scope="row">{{ driver.pk }}</th>
+          <td>{{ driver.first_name }}</td>
+          <td>{{ driver.last_name }}</td>
+          <td>{{ driver.email }}</td>
+          <td>{{ driver.is_staff }}</td>
+          <td>{{ driver.is_active }}</td>
+          <td>{{ driver.date_joined }}</td>
+          <td>{{ driver.license_number }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}
