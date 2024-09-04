@@ -2,8 +2,10 @@
 
 {% block content %}
 
-  {% if car_list %}
-    <h1 class="h1">All cars</h1>
+  {% if driver %}
+    <h1 class="h1">Driver info</h1>
+    <br>
+    <h4 class="h4">Driver's cars</h4>
     <table class="table">
       <thead>
       <tr>
@@ -14,7 +16,7 @@
       </thead>
       <tbody>
 
-      {% for car in car_list %}
+      {% for car in driver.cars.all %}
         <tr>
           <th scope="row"><a
               href="{% url "taxi:car-detail" car.pk %}">{{ car.pk }}</a></th>
@@ -26,5 +28,5 @@
       </tbody>
     </table>
   {% endif %}
-
+  
 {% endblock %}
